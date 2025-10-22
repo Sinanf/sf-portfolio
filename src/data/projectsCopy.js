@@ -11,7 +11,7 @@ export const projectsCopy = {
         tech: ["React", "Tailwind", "Redux"],
         site: "https://example.com",     // sonra kendi linklerinle değiştir
         repo: "https://github.com/user/repo",
-        image: "/projects/p1.jpg"        // public/projects/p1.jpg koyacağız
+        image: "/projects/p1.jpg"        
       },
       {
         id: "p2",

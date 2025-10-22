@@ -1,2 +1,56 @@
 @import "tailwindcss";
 
+/* LIGHT (Figma #2) */
+:root {
+  /* yüzeyler & metin */
+  --bg:        #ffffff;   /* sayfa zemini */
+  --fg:        #0F172A;   /* ana metin (slate-900) */
+  --muted:     #6B7280;   /* ikincil metin (slate-600) */
+  --card:      #ffffff;   /* kart yüzeyi */
+  --border:    #E2E8F0;   /* ayraç/border (slate-200) */
+
+  
+  --accent:    #4731D3;   /* primary */
+  --accent-700:#3730A3;   /* hover için biraz koyu */
+  --accent-300:#BAB2E7;   /* outline butonun kenarı */
+
+  --chrome: #F3F4F6;      /* footer/header için açık gri */
+  --hover-soft: #E5E7EB;  /* light hover ton */
+}
+
+/* DARK (Figma #2) */
+.dark {
+  --bg:        #1F2937;   /* koyu zemin (yakın ton) */
+  --fg:        #FFFFFF;   /* ana metin */
+  --muted:     #9CA3AF;   /* ikincil metin */
+  --card:      #2A2935;   /* kart yüzeyi */
+  --border:    #3B3A46;   /* ayraç/border */
+
+  --accent:    #8F88FF;   /* mor highlight */
+  --accent-700:#6B5FFF;   /* hover */
+  --accent-300:#BAB2E7;   /* outline kenar */
+
+  --chrome: #0F0F14;      /* koyu gri, göz yormayan zemin */
+  --hover-soft: rgba(255,255,255,0.08); /* dark hover ton */
+}
+
+/* Yardımcı utility’ler (sistemi BOZMADAN sadece renkler) */
+.bg-surface      { background-color: var(--bg); }
+.text-foreground { color: var(--fg); }
+.text-muted      { color: var(--muted); }
+.bg-card         { background-color: var(--card); }
+.border-base     { border-color: var(--border); }
+.bg-chrome { background-color: var(--chrome); }
+
+/* Accent buton (filled) */
+.btn-accent       { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-700); }
+
+/* Accent outline */
+.btn-accent--ol {
+  border: 1px solid var(--accent-300);
+  color: var(--accent);
+  background: transparent;
+}
+.btn-accent--ol:hover { background: var(--accent); color: #fff; }
+

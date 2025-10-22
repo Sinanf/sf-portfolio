@@ -1,6 +1,6 @@
 // src/data/personal.js
 export const personal = {
-  name: "Sinan Özdemir",
+  name: "Sinan Faik Özdemir",
   birth: "16.03.1994",
   city: "İstanbul",
   education: "Özyeğin Üniversitesi, 2018",

@@ -1,87 +1,118 @@
 // src/components/Header.jsx
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleLanguage } from "../store/languageSlice";
-import { navCopy } from "../data/navCopy";
+import { useSelector } from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
 
-export default function Header({ onHireClick }) {
-  // Tema (kalıcı)
+export default function Header({ onHireClick, onLangToggle }) {
+  const language = useSelector((s) => s.language.language);
+
+  // kalıcı tema
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
-  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
-  // Dil
-  const dispatch = useDispatch();
-  const language = useSelector((s) => s.language.language);
-  const onToggleLang = () => dispatch(toggleLanguage());
-
-  // Mode etiketi TR/EN
-  const modeLabel =
-    theme === "dark"
-      ? language === "tr" ? "KARANLIK MOD" : "DARK MODE"
-      : language === "tr" ? "AYDINLIK MOD" : "LIGHT MODE";
-
-  // Nav metinleri
-  const n = navCopy[language] || navCopy.en;
+  const ui =
+    language === "tr"
+      ? {
+          modeAction: theme === "dark" ? "Aydınlık Moda Geç" : "Karanlık Moda Geç",
+          langBtn: "SWITCH TO ENGLISH",
+          skills: "Yetenekler",
+          projects: "Projeler",
+          hire: "Beni İşe Al",
+          logoName: "Sinan Faik Özdemir",
+        }
+      : {
+          modeAction: theme === "dark" ? "Light Mode" : "Dark Mode",
+          langBtn: "TÜRKÇE’YE GEÇ",
+          skills: "Skills",
+          projects: "Projects",
+          hire: "Hire me",
+          logoName: "Sinan Faik Özdemir",
+        };
 
   return (
-    <header className="border-b border-zinc-200 dark:border-zinc-800">
-      {/* Üst bar: Mode + Dil */}
-      <div className="max-w-6xl mx-auto px-4 h-10 flex items-center justify-end gap-3 text-[11px]">
-        <div className="flex items-center gap-2">
-          <span className="opacity-70 tracking-wide">{modeLabel}</span>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            role="switch"
-            aria-checked={theme === "dark"}
-            aria-label={language === "tr" ? "Temayı değiştir" : "Toggle theme"}
-            className="inline-flex items-center rounded-full border border-zinc-300 dark:border-zinc-700 px-2 py-1"
+    <header
+      className="border-b border-base sticky top-0 z-10
+                    bg-chrome/90 dark:bg-zinc-900/90
+                    supports-[backdrop-filter]:backdrop-blur-md"
+    >
+      {/* Üst Şerit: Tema + Dil */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 h-10 flex items-center justify-end gap-4 text-xs">
+        {/* Tema anahtarı */}
+        <button
+          onClick={toggleTheme}
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1
+                     border border-[#3B3A46] text-white"
+          aria-pressed={theme === "dark"}
+          title={ui.modeAction}
+        >
+          <span className="tracking-wide">{ui.modeAction}</span>
+          <span
+            className={`w-9 h-4 rounded-full relative transition
+                       ${theme === "dark" ? "bg-zinc-600" : "bg-zinc-400"}`}
+            aria-hidden="true"
           >
             <span
-              className={`relative w-8 h-4 rounded-full transition
-              ${theme === "dark" ? "bg-zinc-900 dark:bg-white" : "bg-zinc-300 dark:bg-zinc-700"}`}
-            >
-              <span
-                className={`absolute top-0.5 h-3 w-3 rounded-full bg-white dark:bg-zinc-900 transition
-                ${theme === "dark" ? "right-0.5" : "left-0.5"}`}
-              />
-            </span>
-          </button>
-        </div>
+              className={`absolute top-0.5 h-3 w-3 rounded-full bg-white transition
+                         ${theme === "dark" ? "right-0.5" : "left-0.5"}`}
+            />
+          </span>
+        </button>
 
+        {/* Dil */}
         <button
-          type="button"
-          onClick={onToggleLang}
-          className="rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1 tracking-wide"
-          title={language === "en" ? "Türkçe'ye geç" : "Switch to English"}
+          onClick={onLangToggle}
+          className="rounded-full px-3 py-1 border border-[#3B3A46] text-white"
         >
-          {language === "en" ? "TÜRKÇE’YE GEÇ" : "SWITCH TO ENGLISH"}
+          {ui.langBtn}
         </button>
       </div>
 
-      {/* Ana header: isim + nav */}
-      <div className="max-w-6xl mx-auto h-16 px-4 flex items-center justify-between">
-        <a href="#" className="text-sm uppercase tracking-wider font-semibold">
-          Sinan Özdemir
+      
+
+      {/* Ana Satır: Logo + Nav */}
+      <div className="max-w-6xl mx-auto h-16 px-4 md:px-6 flex items-center justify-between">
+        {/* Logo + ikon */}
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 text-base md:text-lg uppercase tracking-wider
+                     font-semibold text-white"
+        >
+          <FaUserCircle className="text-[20px]" style={{ color: "#8F88FF" }} />
+          {ui.logoName}
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-      <a href="#skills" className="opacity-80 hover:opacity-100">{n.skills}</a>
-      <a href="#projects" className="opacity-80 hover:opacity-100">{n.projects}</a>
+        <nav className="hidden md:flex items-center gap-8 text-base">
+          <a
+            href="#skills"
+            className="text-white/80 hover:text-white transition-colors"
+          >
+            {ui.skills}
+          </a>
+          <a
+            href="#projects"
+            className="text-white/80 hover:text-white transition-colors"
+          >
+            {ui.projects}
+          </a>
 
-      {/* Hire me — figmadaki pill, modal açsın */}
-      <button
-        type="button"
-        onClick={onHireClick}
-        className="ml-2 inline-flex items-center rounded-full border border-zinc-300 dark:border-zinc-700 px-3 py-1"
-      >
-        {n.hire}
-      </button>
-    </nav>
+          {/* HIRE BUTON */}
+          <button
+            type="button"
+            onClick={onHireClick}
+            className="ml-2 inline-flex items-center rounded-full px-3 py-1 text-sm
+    font-semibold
+    border border-[var(--accent)] text-[var(--accent)]
+    transition-colors
+    hover:bg-[var(--accent)] hover:text-white
+    focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          >
+            {ui.hire}
+          </button>
+        </nav>
       </div>
     </header>
   );
