@@ -41,13 +41,13 @@ export default function Header({ onHireClick, onLangToggle }) {
                     bg-chrome/90 dark:bg-zinc-900/90
                     supports-[backdrop-filter]:backdrop-blur-md"
     >
-      {/* ÃƒÆ’Ã…â€œst Ãƒâ€¦Ã…Â¾erit: Tema + Dil */}
+      {/* Üst Şerit: Tema + Dil */}
       <div className="max-w-6xl mx-auto px-4 md:px-6 h-10 flex items-center justify-end gap-4 text-xs">
-        {/* Tema anahtarÃƒâ€žÃ‚Â± */}
+        {/* Tema anahtarı */}
         <button
           onClick={toggleTheme}
           className="inline-flex items-center gap-2 rounded-full px-3 py-1
-                     border border-[#3B3A46] text-white"
+                     border border-[#3B3A46] text-white hover:cursor-pointer"
           aria-pressed={theme === "dark"}
           title={ui.modeAction}
         >
@@ -67,7 +67,7 @@ export default function Header({ onHireClick, onLangToggle }) {
         {/* Dil */}
         <button
           onClick={onLangToggle}
-          className="rounded-full px-3 py-1 border border-[#3B3A46] text-white"
+          className="rounded-full px-3 py-1 border border-[#3B3A46] text-white hover:cursor-pointer"
         >
           {ui.langBtn}
         </button>
@@ -75,7 +75,7 @@ export default function Header({ onHireClick, onLangToggle }) {
 
       
 
-      {/* Ana SatÃƒâ€žÃ‚Â±r: Logo + Nav */}
+      {/* Ana Satır: Logo + Nav */}
       <div className="max-w-6xl mx-auto h-16 px-4 md:px-6 flex items-center justify-between">
         {/* Logo + image */}
         <a
@@ -117,7 +117,7 @@ export default function Header({ onHireClick, onLangToggle }) {
                         font-semibold
                         border border-[var(--accent)] text-[var(--accent)]
                         transition-colors
-                        hover:bg-[var(--accent)] hover:text-white
+                        hover:bg-[var(--accent)] hover:text-white hover:cursor-pointer
                         focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           >
             {ui.hire}
