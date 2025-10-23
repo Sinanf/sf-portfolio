@@ -1,11 +1,11 @@
-import { toast } from "react-toastify";
+﻿import { toast } from "react-toastify";
 import { useContactMutation } from "../hooks/useContactMutation";
 
 export default function ContactForm({ onSuccess }) {
   const { mutate, isPending } = useContactMutation({
     onSuccess: () => {
       toast.success("Mesajın gönderildi! Teşekkürler.");
-      onSuccess?.(); // modal kapat vb.
+      onSuccess?.();
     },
     onError: () => toast.error("Gönderim başarısız. Lütfen tekrar dene."),
   });
@@ -19,10 +19,11 @@ export default function ContactForm({ onSuccess }) {
       message: f.get("message")?.trim(),
     };
     if (!payload.name || !payload.email || !payload.message) {
-      toast.error("Lütfen tüm alanları doldurun."); return;
+      toast.error("Lütfen tüm alanları doldurun.");
+      return;
     }
-    mutate(payload);                 // try/catch yok, state yönetimi yok
-    e.currentTarget.reset();         // başarılıysa modal kapanırken reset de olur
+    mutate(payload);
+    e.currentTarget.reset();
   };
 
   return (
@@ -42,10 +43,8 @@ export default function ContactForm({ onSuccess }) {
     focus:ring-2 focus:ring-[var(--accent)]
     focus:ring-offset-2 focus:ring-offset-[var(--bg)]
     disabled:opacity-50 disabled:cursor-not-allowed
-  "
->
-    {/* küçük bir ikon opsiyonel */}
-  <span aria-hidden="true" className="mr-1.5">📨</span>
+  ">
+  <span aria-hidden="true" className="mr-1.5"></span>
         {isPending ? "Gönderiliyor..." : "Gönder"}
       </button>
     </form>

@@ -1,37 +1,39 @@
-// src/components/Header.jsx
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+﻿// src/components/Header.jsx
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme as toggleThemeAction } from "../store/themeSlice";
 // Replaced FaUserCircle with a custom image logo
 
 export default function Header({ onHireClick, onLangToggle }) {
   const language = useSelector((s) => s.language.language);
 
   // kalıcı tema
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const dispatch = useDispatch();
+  const theme = useSelector((s) => s.theme.theme);
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("theme", theme);
+    
   }, [theme]);
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggleTheme = () => dispatch(toggleThemeAction());
 
-  const ui =
-    language === "tr"
-      ? {
-          modeAction: theme === "dark" ? "Aydınlık Moda Geç" : "Karanlık Moda Geç",
-          langBtn: "SWITCH TO ENGLISH",
-          skills: "Yetenekler",
-          projects: "Projeler",
-          hire: "Beni İşe Al",
-          logoName: "Sinan Faik Özdemir",
-        }
-      : {
-          modeAction: theme === "dark" ? "Light Mode" : "Dark Mode",
-          langBtn: "TÜRKÇE’YE GEÇ",
-          skills: "Skills",
-          projects: "Projects",
-          hire: "Hire me",
-          logoName: "Sinan Faik Özdemir",
-        };
+    const ui =
+  language === "tr"
+    ? {
+        modeAction: theme === "dark" ? "Aydınlık Moda Geç" : "Karanlık Moda Geç",
+        langBtn: "İngilizce'ye geç",
+        skills: "Yetenekler",
+        projects: "Projeler",
+        hire: "Beni İşe Al",
+        logoName: "Sinan Faik Özdemir",
+      }
+    : {
+        modeAction: theme === "dark" ? "Light Mode" : "Dark Mode",
+        langBtn: "Switch the Turkish",
+        skills: "Skills",
+        projects: "Projects",
+        hire: "Hire me",
+        logoName: "Sinan Faik Özdemir",
+      };
 
   return (
     <header
@@ -39,9 +41,9 @@ export default function Header({ onHireClick, onLangToggle }) {
                     bg-chrome/90 dark:bg-zinc-900/90
                     supports-[backdrop-filter]:backdrop-blur-md"
     >
-      {/* Üst Şerit: Tema + Dil */}
+      {/* ÃƒÆ’Ã…â€œst Ãƒâ€¦Ã…Â¾erit: Tema + Dil */}
       <div className="max-w-6xl mx-auto px-4 md:px-6 h-10 flex items-center justify-end gap-4 text-xs">
-        {/* Tema anahtarı */}
+        {/* Tema anahtarÃƒâ€žÃ‚Â± */}
         <button
           onClick={toggleTheme}
           className="inline-flex items-center gap-2 rounded-full px-3 py-1
@@ -73,7 +75,7 @@ export default function Header({ onHireClick, onLangToggle }) {
 
       
 
-      {/* Ana Satır: Logo + Nav */}
+      {/* Ana SatÃƒâ€žÃ‚Â±r: Logo + Nav */}
       <div className="max-w-6xl mx-auto h-16 px-4 md:px-6 flex items-center justify-between">
         {/* Logo + image */}
         <a
@@ -112,11 +114,11 @@ export default function Header({ onHireClick, onLangToggle }) {
             type="button"
             onClick={onHireClick}
             className="ml-2 inline-flex items-center rounded-full px-3 py-1 text-sm
-    font-semibold
-    border border-[var(--accent)] text-[var(--accent)]
-    transition-colors
-    hover:bg-[var(--accent)] hover:text-white
-    focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                        font-semibold
+                        border border-[var(--accent)] text-[var(--accent)]
+                        transition-colors
+                        hover:bg-[var(--accent)] hover:text-white
+                        focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
           >
             {ui.hire}
           </button>
@@ -125,3 +127,13 @@ export default function Header({ onHireClick, onLangToggle }) {
     </header>
   );
 }
+
+
+
+
+
+
+
+
+
+

@@ -8,5 +8,5 @@ export const personal = {
   email: "sinanfozdemir@gmail.com",
   github: "https://github.com/Sinanf",
   linkedin: "https://www.linkedin.com/in/sinanfozdemir/",
-  blog: "#"
+  blog: "#",
 };
