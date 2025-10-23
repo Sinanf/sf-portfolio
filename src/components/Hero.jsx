@@ -4,12 +4,13 @@ import { heroCopy } from "../data/heroCopy";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import myPhoto from "../assets/sf-photo.jpg";
 
-export default function Hero() {
+export default function Hero({onHireClick}) {
   const language = useSelector((s) => s.language.language);
   const t = heroCopy[language] || heroCopy.en;
 
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-center">
+
       {/* Sol: Başlık + metin + CTA'lar */}
       <div className="space-y-6">
         <h1 className="text-[40px] leading-[1.1] md:text-6xl md:leading-[1.05] font-extrabold tracking-tight">
@@ -26,6 +27,12 @@ export default function Hero() {
           {/* Primary (Mor) */}
           <a
             href="mailto:sinanfozdemir@gmail.com"
+            onClick={(e) => {
+              if (onHireClick) {
+                e.preventDefault();
+                onHireClick();
+              }
+            }}
             className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium
                        bg-[var(--accent)] text-white shadow-sm hover:bg-[#3730A3] transition-colors"
           >

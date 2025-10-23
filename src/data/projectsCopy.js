@@ -1,35 +1,40 @@
 // src/data/projectsCopy.js
 
+
+
 export const projectsCopy = {
   en: {
     sectionTitle: "Projects",
     items: [
       {
         id: "p1",
-        title: "Minimal Portfolio",
-        desc: "A minimal, responsive portfolio with dark/light mode and i18n.",
-        tech: ["React", "Tailwind", "Redux"],
-        site: "https://example.com",     // sonra kendi linklerinle değiştir
-        repo: "https://github.com/user/repo",
-        image: "/projects/p1.jpg"        
+        title: "Personal Portfolio",
+        desc: "A responsive portfolio built with React, Vite, Tailwind, and Redux-based i18n system, featuring light/dark themes, a Hire Me modal, and a contact form with fetch integration.",
+        tech: ["React", "Vite", "Tailwind", "Redux", "React Query"],
+        site: "#",     // sonra kendi linklerinle değiştir
+        repo: "https://github.com/Sinanf/sf-portfolio",
+        image: {
+          light: "/projects/p1-light.png",
+          dark: "/projects/p1-dark.png"
+        }        
       },
       {
         id: "p2",
-        title: "Todo App",
-        desc: "Task management app with filters and persistence.",
-        tech: ["React", "LocalStorage"],
-        site: "#",
-        repo: "#",
-        image: "/projects/p2.jpg"
+        title: "Pizza SPA",
+        desc: "A single-page pizza ordering app built with React and Vite. Includes product customization, form handling, and responsive UI.",
+        tech: ["React", "Vite", "React Router", "CSS/Tailwind"],
+        site: "https://pizza-spa-eta.vercel.app/",
+        repo: "https://github.com/Sinanf/pizza-spa",
+        image: "/projects/p2.png"
       },
       {
         id: "p3",
-        title: "API Demo",
-        desc: "Fetch and POST examples against a mock API.",
-        tech: ["Axios", "REST"],
+        title: "New Project",
+        desc: "Coming Soon",
+        tech: ["React", "Vite", "Tailwind", "Redux", "React Query"],
         site: "#",
         repo: "#",
-        image: "/projects/p3.jpg"
+        image: "https://content.imageresizer.com/images/memes/elmo-fire-meme-29s5ao.jpg"
       }
     ]
   },
@@ -39,30 +44,33 @@ export const projectsCopy = {
     items: [
       {
         id: "p1",
-        title: "Minimal Portföy",
-        desc: "Karanlık/açık tema ve çok dilli destekle minimal, responsive portföy.",
-        tech: ["React", "Tailwind", "Redux"],
-        site: "https://example.com",
-        repo: "https://github.com/user/repo",
-        image: "/projects/p1.jpg"
+        title: "Kişisel Portfolyo",
+        desc: "React, Vite, Tailwind ve Redux tabanlı çok dilli yapı ile geliştirilen; açık/karanlık tema ve iletişim formu içeren responsive portfolyo projesi.",
+        tech: ["React", "Vite", "Tailwind", "Redux", "React Query"],
+        site: "https://sf-portfolio-alpha.vercel.app/",
+        repo: "https://github.com/Sinanf/sf-portfolio",
+        image: {
+          light: "/projects/p1-light.png",
+          dark: "/projects/p1-dark.png"
+        }
       },
       {
         id: "p2",
-        title: "Yapılacaklar Uygulaması",
-        desc: "Filtreler ve kalıcılık içeren görev yönetimi uygulaması.",
-        tech: ["React", "LocalStorage"],
-        site: "#",
-        repo: "#",
-        image: "/projects/p2.jpg"
+        title: "Pizza SPA",
+        desc: "React ve Vite ile geliştirilmiş tek sayfa pizza sipariş uygulaması. Ürün özelleştirme, form yönetimi ve responsive arayüz içerir.",
+        tech: ["React", "Vite", "React Router", "CSS/Tailwind"],
+        site: "https://pizza-spa-eta.vercel.app/",
+        repo: "https://github.com/Sinanf/pizza-spa",
+        image: "/projects/p2.png"
       },
       {
         id: "p3",
-        title: "API Demosu",
-        desc: "Mock API ile veri çekme ve POST örnekleri.",
+        title: "Yeni Proje",
+        desc: "Çok Yakında",
         tech: ["Axios", "REST"],
         site: "#",
         repo: "#",
-        image: "/projects/p3.jpg"
+        image: "https://content.imageresizer.com/images/memes/elmo-fire-meme-29s5ao.jpg"
       }
     ]
   }

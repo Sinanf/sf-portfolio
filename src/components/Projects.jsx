@@ -1,5 +1,6 @@
 // src/components/Projects.jsx
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { projectsCopy } from "../data/projectsCopy";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
@@ -7,6 +8,18 @@ import { FiExternalLink } from "react-icons/fi";
 export default function Projects() {
   const language = useSelector((s) => s.language.language);
   const t = projectsCopy[language] || projectsCopy.en;
+  const [isDark, setIsDark] = useState(() =>
+    document.documentElement.classList.contains("dark")
+  );
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const update = () => setIsDark(root.classList.contains("dark"));
+    // Observe class changes on <html> to react to theme toggle
+    const observer = new MutationObserver(update);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="projects" aria-labelledby="projects-title" className="border-top border-base">
@@ -31,7 +44,13 @@ export default function Projects() {
               {/* Görsel */}
               <figure className="w-full aspect-[4/3] bg-zinc-100 dark:bg-zinc-800">
                 <img
-                  src={p.image}
+                  src={
+                    typeof p.image === "object"
+                      ? isDark
+                        ? p.image.dark || p.image.light
+                        : p.image.light || p.image.dark
+                      : p.image
+                  }
                   alt={p.title}
                   loading="lazy"
                   decoding="async"

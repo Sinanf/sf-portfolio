@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FaUserCircle } from "react-icons/fa";
+// Replaced FaUserCircle with a custom image logo
 
 export default function Header({ onHireClick, onLangToggle }) {
   const language = useSelector((s) => s.language.language);
@@ -75,17 +75,25 @@ export default function Header({ onHireClick, onLangToggle }) {
 
       {/* Ana Satır: Logo + Nav */}
       <div className="max-w-6xl mx-auto h-16 px-4 md:px-6 flex items-center justify-between">
-        {/* Logo + ikon */}
+        {/* Logo + image */}
         <a
           href="#"
           className="inline-flex items-center gap-2 text-base md:text-lg uppercase tracking-wider
                      font-semibold text-white"
         >
-          <FaUserCircle className="text-[20px]" style={{ color: "#8F88FF" }} />
+          <img
+            src="https://i.imgflip.com/1um67c.jpg?a488928"
+            alt="Logo"
+            className="w-12 h-12 rounded-full object-cover hover:w-17 hover:h-17 transition-all"
+          />
           {ui.logoName}
         </a>
 
-        <nav className="hidden md:flex items-center gap-8 text-base">
+        <nav className="flex items-center
+            gap-3 sm:gap-6
+            text-xs sm:text-sm
+            opacity-80
+            flex-wrap">
           <a
             href="#skills"
             className="text-white/80 hover:text-white transition-colors"

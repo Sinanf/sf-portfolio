@@ -23,7 +23,7 @@ export default function App() {
         onHireClick={() => setHireOpen(true)}
         onLangToggle={() => dispatch(toggleLanguage())}
       />
-      <Hero />
+      <Hero onHireClick={() => setHireOpen(true)} />
       <Skills />
       <Profile />
       <Projects />
