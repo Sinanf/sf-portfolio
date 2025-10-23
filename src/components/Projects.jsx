@@ -81,7 +81,7 @@ export default function Projects() {
               {/* İçerik */}
               <div className="p-4 md:p-5 flex-1 flex flex-col">
                 <h3 className="text-foreground font-semibold text-lg leading-snug">{p.title}</h3>
-                <p className="text-[15px] text-muted mt-1 leading-relaxed min-h-[64px]">{p.desc}</p>
+                <p className="text-[15px] text-muted mt-1 leading-relaxed min-h-[64px] lg:min-h-[88px]">{p.desc}</p>
 
                 {/* Footer: Etiketler + Aksiyonlar (alta sabitle) */}
                 <div className="mt-auto">

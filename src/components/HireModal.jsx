@@ -1,10 +1,12 @@
 // src/components/HireModal.jsx
 import { useEffect, useRef } from "react";
-import ContactForm from "./ContactForm";
+import ContactForm from "./ContactFormLocalized";
+import { useSelector } from "react-redux";
 
 export default function HireModal({ open, onClose }) {
   const dialogRef = useRef(null);
   const firstInputRef = useRef(null);
+  const language = useSelector((s) => s.language.language);
 
   useEffect(() => {
     if (!open) return;
@@ -47,7 +49,9 @@ export default function HireModal({ open, onClose }) {
 
           {/* Başlık + Kapat */}
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-heading text-lg font-semibold">Hire Me</h3>
+            <h3 className="text-heading text-lg font-semibold">
+              {language === "tr" ? "Beni İşe Al" : "Hire Me"}
+            </h3>
             <button
               onClick={onClose}
               className="text-sm text-foreground/70 hover:text-foreground"
